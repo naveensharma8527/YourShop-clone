@@ -1,0 +1,170 @@
+#logo{
+    height: 80px;
+    width: 80px;   
+    border-radius: 50%;         
+}
+
+#navbar{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    padding: 5px;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    background-color: rgb(216, 211, 211);
+}
+#nav_top{
+    display: flex;
+    justify-content: space-between;
+}
+#homepage_search{
+border: 1px solid black;
+width: 500px;
+height: 45px;
+border-radius: 50px;
+font-size: 15px;
+color: gray;
+}
+.navIcon{
+    height: 20px;
+
+}
+#burger_icon{
+    height: 20px;
+}
+#nav_bottom{
+    display: flex;
+    justify-content: space-between;
+}
+#navbar{
+    margin-top: 4px;
+    position: sticky;
+}
+#nav_top{
+    margin-bottom: 30px;
+}
+#nav_bottom{
+    font-size: 20px;
+}
+
+
+a{
+    margin-left: 15px;
+    text-decoration: none;
+    color: black;
+}
+/* preheader */
+#preheader{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.dollar{
+    height: 20px;
+    width: 20px;
+}
+#cashBack h1{
+    text-align: center;
+}
+#cashBackImage{
+    display: block;
+    margin: auto;
+}
+/* feattured */
+#featured{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+#featured > div{
+    width: 30%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    padding: 20px;
+}
+#featured img{
+    width: 100%;
+    height: 300px;
+}
+/* hotdeals */
+#hotdeal{
+    padding: 40px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+#hotdeal > img{
+    margin-top: 20px;
+    display: block;
+    margin: auto;
+}
+#hotdeal>h1{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+#hotdeal>div{
+    display: flex;
+    justify-content: space-around;
+}
+#hotdeal>div>img{
+    display: block;
+    height: 150px;
+}
+/* ourbrands */
+
+#ourbrands{
+    width: 80%;
+    margin: auto;
+    padding: 30px;
+    text-align: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    margin-bottom: 40px;
+    
+}
+
+#ourbrands>div{
+    display: flex;
+    justify-content: space-around;
+}
+#ourbrands p{
+    font-weight: bold;
+    font-size: large;
+}
+#ourbrands>h1{
+    font-weight: bold;
+    font-size: 50px;
+}
+
+
+/* footer */
+#fblack{
+    background-color: #707386;
+    padding: 8px;
+    font-size: 20px;
+}
+#fblack input{
+    height: 30px;
+    width: 200px;
+    margin-left: 10px;
+}
+#fblack button{
+    height: 35px;
+    margin-left: 10px;
+}
+#fblack img{
+    height: 35px;
+    margin-left: 10px;
+}
+
+#fEmail{
+    display: flex;
+    justify-content: space-between;
+}
+#contacts{
+    display: flex;
+    justify-content: space-between;
+}
+

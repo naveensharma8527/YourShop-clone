@@ -1,0 +1,110 @@
+#logo{
+    height: 80px;
+    width: 80px; 
+    border-radius: 50%;           
+}
+#navbar{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    padding: 5px;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    background-color: rgb(216, 211, 211);
+}
+#nav_top{
+    display: flex;
+    justify-content: space-between;
+}
+#homepage_search{
+border: 1px solid black;
+width: 500px;
+height: 45px;
+border-radius: 50px;
+font-size: 15px;
+color: gray;
+}
+.navIcon{
+    height: 20px;
+
+}
+#burger_icon{
+    height: 20px;
+}
+#nav_bottom{
+    display: flex;
+    justify-content: space-between;
+}
+#navbar{
+    margin-top: 4px;
+    position: sticky;
+}
+#nav_top{
+    margin-bottom: 30px;
+}
+#nav_bottom{
+    font-size: 20px;
+}
+
+
+a{
+    margin-left: 15px;
+    text-decoration: none;
+    color: black;
+}
+
+
+
+
+
+/* form */
+#signupform{
+    width: 70%;
+    margin: auto;
+    font-size: 20px;
+    margin-bottom: 60px;
+}
+#name,#email,#password,#mobile{
+    width: 45%;
+    height: 30px;
+    font-size: 17px;
+}
+label{
+  margin-top: 20px;  
+}
+#submit{
+    width: 30%;
+    height: 30px;
+    font-weight: bold ;
+    border-radius: 10px;
+    background-color: lightgray;
+}
+/* footer */
+#fblack{
+    
+    margin: auto;
+    
+    background-color: #707386;
+    padding: 10px;
+    font-size: 20px;
+}
+#fblack input{
+    height: 30px;
+    width: 200px;
+    margin-left: 10px;
+}
+#fblack button{
+    height: 35px;
+    margin-left: 10px;
+}
+#fblack img{
+    height: 35px;
+    margin-left: 10px;
+}
+
+#fEmail{
+    display: flex;
+    justify-content: space-between;
+}
+#contacts{
+    display: flex;
+    justify-content: space-between;
+}
