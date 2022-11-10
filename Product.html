@@ -10,9 +10,256 @@
             height: 80px;
             width: 80px;            
         }
+        #navbar{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    padding: 5px;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    background-color: rgb(216, 211, 211);
+}
+#nav_top{
+    display: flex;
+    justify-content: space-between;
+}
+#homepage_search{
+border: 1px solid black;
+width: 500px;
+height: 45px;
+border-radius: 50px;
+font-size: 15px;
+color: gray;
+}
+.navIcon{
+    height: 20px;
+
+}
+#burger_icon{
+    height: 20px;
+}
+#nav_bottom{
+    display: flex;
+    justify-content: space-between;
+}
+#navbar{
+    margin-top: 4px;
+    position: sticky;
+}
+#nav_top{
+    margin-bottom: 30px;
+}
+#nav_bottom{
+    font-size: 20px;
+}
+
+
+a{
+    margin-left: 15px;
+    text-decoration: none;
+    color: black;
+}
+
+/* leftandright */
+
+#leftandright{
+    display: flex;
+}
+#container{
+    margin-left: 30px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-row: auto;
+    gap: 20px;
+}
+#container>div{
+    width: 80%;
+}
+#container img{
+    width: 100%;
+    height: 300px;
+}
+
+
+
+
     </style>
 </head>
 <body>
-    
+    <!-- Navbar -->
+    <div id="navbar">
+        <div id="nav_top">
+            <div>
+                <a href="./Homepage.html"><img id="logo" src="./YOURSHOPLOGO.png" alt="logo"></a>
+            </div>
+            <div>
+                <input oninput="search()"  type="search" placeholder="Search YOURSHOP.COM" id="homepage_search"  >
+                <i class="fa fa-search" style="font-size:24px"></i>
+            </div>
+            <div>
+                <div>
+                    <img src="https://img.shop.com/Image/header2013/usa-shopping-annuity-biotin-gummies-head-banner1664295986848.png" >
+                </div>
+            </div>
+        </div>
+        <div id="nav_bottom">
+            <div>
+                <img id="burger_icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0gEJp0oa5bRcmA3ILb5TU2JNEY_q_NfAxmd1nkSHfzTS_R1U4eF_JiHyEtBQZs8Vab4k&usqp=CAU" alt="">
+                <span>Category</span>
+            </div>
+            <div>
+                <a href="">Exclusive Brands</a>
+                <a href="./Product.html">Stores</a>
+                <a href="">Deals</a>
+                <a href="">SHOP Travel</a>
+                <a href="">Department</a>
+            </div>
+            <div>
+                <a href="./Login.html"><img class="navIcon" src="http://cdn.onlinewebfonts.com/svg/img_311846.png" alt="">  Login</a>
+                <a href="./Signup.html"  >
+                    <img class="navIcon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMPfBrGAGadGf-vmCYcTQL2eiXbB96w5ctrw&usqp=CAU" alt="">   Sign UP</a>
+                <a href="./cart.html">
+                    <img class="navIcon" src="https://cdn-icons-png.flaticon.com/512/34/34627.png" alt="">Cart</a>
+            </div>
+            
+
+        </div>
+    </div>
+
+
+
+    <!-- sort and filter div -->
+    <div>
+        <span>Sort:</span> <select onChange="handlePrice()" name="" id="pricesort">
+            <option value="All">All</option>
+            <option value="Price Low to High">Price Low to High</option>
+            <option value="Price High to Low">Price High to Low</option>
+        </select>
+    </div>
+    <hr>
+    <!-- display products -->
+    <div id="leftandright">
+
+        <!-- left -->
+        <div id="categories">
+            <ul>Material
+                <li>Leather</li>
+                <li>Rubber</li>
+                <li>Plastic</li>
+                <li>Textiles </li>
+                <li>Wood</li>
+            </ul>
+
+            <ul>color
+                <li>Black</li>
+                <li>Blue</li>
+                <li>Brown</li>
+                <li>Gold</li>
+                <li>Red</li>
+                <li>Silver</li>
+            </ul>
+
+
+            <ul>Brand
+                <li>Nunn Bush</li>
+                <li>Aston</li>
+                <li>Clarks</li>
+                <li>Skechers</li>
+                <li>Lamo</li>
+
+            </ul>
+        </div>
+
+        <hr style="margin-left: 30px">
+
+        <!-- div right -->
+
+        <div id="container">
+            
+        </div>
+
+    </div>
 </body>
 </html>
+
+<script>
+    
+
+        let productsData =[];
+        let url = "https://fakestoreapi.com/products";
+
+
+        fetch(url).then(res => res.json()).then(data => {
+            // console.log(data);
+            productsData = [...data];
+            console.log(productsData)
+            displayProduct(data);
+        })
+
+        function handlePrice(){
+            let sortedValue = document.querySelector("#pricesort").value;
+            let filteredData = [...productsData]
+            console.log(sortedValue)
+            if(sortedValue === "All"){
+                displayProduct(productsData)
+            }else if(sortedValue === "Price Low to High"){
+                filteredData.sort(function(a,b){
+                    return a.price - b.price
+                })
+                displayProduct(filteredData)
+            }else if(sortedValue === "Price High to Low"){
+                filteredData.sort(function(a,b){
+                    return b.price - a.price
+                })
+                displayProduct(filteredData)
+            }
+
+        }
+
+
+        function search(){
+            let searchValue = document.querySelector("#homepage_search").value.toLowerCase();
+            console.log(searchValue);
+            let searchedResult = productsData.filter(e => {
+                return e.title.toLowerCase().includes(searchValue)
+            })
+            displayProduct(searchedResult);
+        }
+
+        function displayProduct(data){
+            document.querySelector("#container").innerHTML ="";
+            data.forEach(e => {
+                // console.log(e.image)
+                let card = document.createElement("div");
+
+                let pImage = document.createElement("img");
+                pImage.setAttribute("src",e.image)
+                
+                let pTitle = document.createElement("h3");
+                pTitle.innerText = e.title;
+
+                let pPrice = document.createElement("p");
+                pPrice.innerText = "₹"+ e.price ;
+
+                let pRating = document.createElement("p");
+                pRating.innerText= "☆" +e.rating.rate ;
+
+
+                let addTocart = document.createElement("button");
+                addTocart.innerText = "Add to Cart 🛒";
+
+                card.append(pImage,pTitle,pPrice,pRating,addTocart)
+
+                document.querySelector("#container").append(card);
+
+            })
+        }
+
+
+
+
+   
+   
+
+
+
+
+</script>
