@@ -5,8 +5,134 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
+    <style>
+            
+        #logo{
+            height: 80px;
+            width: 80px;            
+        }
+        #navbar{
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+            padding: 5px;
+            position: fixed; /* Set the navbar to fixed position */
+            top: 0; /* Position the navbar at the top of the page */
+            background-color: rgb(216, 211, 211);
+        }
+        #nav_top{
+            display: flex;
+            justify-content: space-between;
+        }
+        #homepage_search{
+        border: 1px solid black;
+        width: 500px;
+        height: 45px;
+        border-radius: 50px;
+        font-size: 15px;
+        color: gray;
+        }
+        .navIcon{
+            height: 20px;
+
+        }
+        #burger_icon{
+            height: 20px;
+        }
+        #nav_bottom{
+            display: flex;
+            justify-content: space-between;
+        }
+        #navbar{
+            margin-top: 4px;
+            position: sticky;
+        }
+        #nav_top{
+            margin-bottom: 30px;
+        }
+        #nav_bottom{
+            font-size: 20px;
+        }
+
+
+        a{
+            margin-left: 15px;
+            text-decoration: none;
+            color: black;
+        }
+        /* cartbox */
+        #cartbox{
+            display: flex;
+            justify-content: space-around;
+
+        }
+
+    </style>
 </head>
 <body>
-    
+    <div id="navbar">
+        <div id="nav_top">
+            <div>
+                <a href="./Homepage.html"><img id="logo" src="./YOURSHOPLOGO.png" alt="logo"></a>
+            </div>
+            <div>
+                <input  type="search" placeholder="Search YOURSHOP.COM" id="homepage_search"  >
+                <i class="fa fa-search" style="font-size:24px"></i>
+            </div>
+            <div>
+                <div>
+                    <img src="https://img.shop.com/Image/header2013/usa-shopping-annuity-biotin-gummies-head-banner1664295986848.png" >
+                </div>
+            </div>
+        </div>
+        <div id="nav_bottom">
+            <div>
+                <img id="burger_icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0gEJp0oa5bRcmA3ILb5TU2JNEY_q_NfAxmd1nkSHfzTS_R1U4eF_JiHyEtBQZs8Vab4k&usqp=CAU" alt="">
+                <span>Category</span>
+            </div>
+            <div>
+                <a href="">Exclusive Brands</a>
+                <a href="./Product.html">Stores</a>
+                <a href="">Deals</a>
+                <a href="">SHOP Travel</a>
+                <a href="">Department</a>
+            </div>
+            <div>
+                <a href="./Login.html"><img class="navIcon" src="http://cdn.onlinewebfonts.com/svg/img_311846.png" alt="">  Login</a>
+                <a href="./Signup.html"  >
+                    <img class="navIcon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMPfBrGAGadGf-vmCYcTQL2eiXbB96w5ctrw&usqp=CAU" alt="">   Sign UP</a>
+                <a href="./cart.html">
+                    <img class="navIcon" src="https://cdn-icons-png.flaticon.com/512/34/34627.png" alt="">Cart</a>
+            </div>
+            
+
+        </div>
+    </div>
+
+
+    <!-- cart -->
+    <h1>Your Cart</h1>
+    <hr>
+    <div id="cartbox">
+        <div id="cartProducts">
+           display
+
+        </div>
+        <div id="cartTotal">
+            <h2>Order Total</h2>
+            <hr>
+            <input type="text" placeholder="Zip code">
+            <button>Estimate Shipping</button>
+            <br>
+            <button>Proceed to CheckOut</button>
+            <div>
+                <p>or checkout with:</p>
+                <img src="https://img.shop.com/Image/local/images/cc/paypal-logo.svg" alt="">
+                <br>
+                <img src="https://img.shop.com/Image/local/images/cc/paypal-credit.svg" alt="">
+                <br>
+                <img src="https://src.mastercard.com/assets/img/btn/src_chk_btn_147x034px.svg?locale=en_us&paymentmethod=master,visa,discover,amex&checkoutid=a4a6w4v6h7cg0iaijxn0j1iaoelnus5936" alt="">
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>
