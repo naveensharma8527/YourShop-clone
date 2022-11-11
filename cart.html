@@ -64,7 +64,18 @@
             justify-content: space-around;
 
         }
-
+        #cartProducts img{
+            width: 50%;
+            height: 200px;
+        }
+        
+        #card{
+            display: flex;
+        }
+        #removebtn{
+            display: block;
+            margin-top: 8px;
+        }
     </style>
 </head>
 <body>
@@ -112,12 +123,16 @@
     <h1>Your Cart</h1>
     <hr>
     <div id="cartbox">
+        <!-- left -->
         <div id="cartProducts">
-           display
+           <div id="cartProductImage"></div>
+           <div id="cartProductInfo"></div>
 
         </div>
+        <!-- right -->
+
         <div id="cartTotal">
-            <h2>Order Total</h2>
+            <h2 id="orderTotal">Order Total</h2>
             <hr>
             <input type="text" placeholder="Zip code">
             <button>Estimate Shipping</button>
@@ -136,3 +151,150 @@
     </div>
 </body>
 </html>
+<script>
+    
+    let shoppingCart = JSON.parse(localStorage.getItem("shoppingcart")) || [];
+
+       
+
+
+    function displayProduct(data){
+            document.querySelector("#cartProducts").innerHTML ="";
+
+            
+
+            data.forEach((e,index) => {
+                
+                e.itemCount = 1;
+                
+                e.itemTotal = e.price;
+                
+
+                let card = document.createElement("div")
+                card.setAttribute("id","card")
+
+
+                let cartProductImage = document.createElement("div")
+               cartProductImage.setAttribute("id","cartProductImage")
+
+                let pImage = document.createElement("img");
+                pImage.setAttribute("src",e.image)
+                cartProductImage.append(pImage)
+
+               
+
+
+               let cartProductInfo = document.createElement("div")
+               cartProductInfo.setAttribute("id","cartProductInfo")
+
+
+                let pTitle = document.createElement("h3");
+                pTitle.innerText = e.title;
+
+                let pPrice = document.createElement("p");
+                pPrice.innerText = "₹"+ e.price ;
+
+                let pRating = document.createElement("p");
+                pRating.innerText= "☆" +e.rating.rate ;
+
+                let showCount = document.createElement("span");
+                showCount.innerText = e.itemCount;
+
+                let subTotal = document.createElement("p")
+                subTotal.innerText = "SubTotal : " + "₹"+ e.price
+
+                let decItem = document.createElement("button");
+                decItem.innerText = "-"
+                decItem.addEventListener("click",() => {
+                    if(e.itemCount > 1){
+                        e.itemCount--;
+                    }
+
+                    
+                    showCount.innerText = e.itemCount;
+
+                    e.itemTotal = e.itemCount*e.price
+                    
+                    // console.log(e.itemTotal)
+                    subTotal.innerText = "SubTotal : " + "₹"+  e.itemTotal
+
+                    let payment = 0;
+                    data.forEach(e => {
+                    payment+=e.itemTotal;
+                    })
+                    document.querySelector("#orderTotal").innerText = "Order Total :" +"₹" + payment
+                    
+                
+                })
+
+
+                let incItem = document.createElement("button");
+                incItem.innerText="+"
+                incItem.addEventListener("click",() => {
+                    e.itemCount++;
+
+                    
+                    showCount.innerText = e.itemCount;
+
+                    e.itemTotal = e.itemCount*e.price
+                    
+                    // console.log(e.itemTotal)
+                    subTotal.innerText = "SubTotal : " + "₹"+  e.itemTotal
+
+                    let payment = 0;
+                    data.forEach(e => {
+                    payment+=e.itemTotal;
+                    })
+                    document.querySelector("#orderTotal").innerText = "Order Total :" +"₹" + payment
+                    
+                
+                })
+
+                
+
+                
+
+
+                let removefromcart = document.createElement("button");
+                removefromcart.setAttribute("id","removebtn")
+                removefromcart.innerText = "Remove";
+                removefromcart.addEventListener("click",() =>{
+                    data.splice(index,1);
+                    let payment = 0;
+                    data.forEach(e => {
+                    payment+=e.itemTotal;
+                    })
+                    document.querySelector("#orderTotal").innerText = "Order Total :" +"₹" + payment
+                    
+                    displayProduct(data)
+
+                })
+                
+
+                
+
+                cartProductInfo.append(pTitle,pPrice,pRating,decItem,showCount,incItem,removefromcart,subTotal)
+
+               
+
+
+                card.append(cartProductImage,cartProductInfo,)
+                let hr = document.createElement("hr")
+
+                document.querySelector("#cartProducts").append(card,hr);
+
+                
+                
+
+            })
+        }
+
+
+        let payment =0;
+        shoppingCart.forEach(e => {
+            payment+=e.price;
+        })
+        document.querySelector("#orderTotal").innerText = "Order Total :" +"₹" +payment
+
+        displayProduct(shoppingCart);
+</script>
