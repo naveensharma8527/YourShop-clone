@@ -182,7 +182,9 @@ a{
 
 <script>
     
-
+        let shoppingCart = JSON.parse(localStorage.getItem("shoppingcart")) || [];
+        console.log(shoppingCart)
+        
         let productsData =[];
         let url = "https://fakestoreapi.com/products";
 
@@ -245,6 +247,25 @@ a{
 
                 let addTocart = document.createElement("button");
                 addTocart.innerText = "Add to Cart 🛒";
+                console.log(shoppingCart);
+                addTocart.addEventListener("click",()=>{
+                    shoppingCart = JSON.parse(localStorage.getItem("shoppingcart")) || []
+                    let notPresent = true;
+                    shoppingCart.forEach(x => {
+                        if(x.id === e.id){
+                            notPresent=false;
+                        }
+                    })
+                    if(notPresent){
+                        shoppingCart.push(e);
+                    
+                        localStorage.setItem("shoppingcart",JSON.stringify(shoppingCart));
+                    }else{
+                        alert("Item is already Present In cart")
+                    }
+                    
+                    
+                })
 
                 card.append(pImage,pTitle,pPrice,pRating,addTocart)
 
