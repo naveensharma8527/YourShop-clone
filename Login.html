@@ -120,7 +120,7 @@
     <div id="navbar">
         <div id="nav_top">
             <div>
-                <a href="./Homepage.html"><img id="logo" src="./YOURSHOPLOGO.png" alt="logo"></a>
+                <a href="./index.html"><img id="logo" src="./YOURSHOPLOGO.png" alt="logo"></a>
                 
             </div>
             <div>
@@ -207,3 +207,29 @@
     
 </body>
 </html>
+<script>
+    let userInfo = JSON.parse(localStorage.getItem("userInfo"))||[]
+
+
+    document.querySelector("form").addEventListener("submit",(e) => {
+        e.preventDefault();
+        let flag = false;
+        let uEmail = document.querySelector("#email").value;
+
+        let uPassword = document.querySelector("#password").value;
+
+        userInfo.forEach(e => {
+            if(e.email == uEmail && e.password == uPassword){
+                flag = true;
+            }
+        })
+        if(flag){
+            alert("Login Successfull! Welcome to YOURSHOP.COM,Happy Shopping")
+            window.location.href = "./index.html"
+        }else{
+            alert("Wrong Credential");
+           
+        }
+
+    })
+</script>
