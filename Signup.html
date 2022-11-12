@@ -126,7 +126,7 @@
     <div id="navbar">
         <div id="nav_top">
             <div>
-                <a href="./Homepage.html"><img id="logo" src="./YOURSHOPLOGO.png" alt="logo"></a>
+                <a href="./index.html"><img id="logo" src="./YOURSHOPLOGO.png" alt="logo"></a>
             </div>
             <div>
                 <input  type="search" placeholder="Search YOURSHOP.COM" id="homepage_search"  >
@@ -223,3 +223,36 @@
     </div>
 </body>
 </html>
+<script>
+    let userInfo = JSON.parse(localStorage.getItem("userInfo"))||[]
+    document.querySelector("form").addEventListener("submit",(e)=>{
+            e.preventDefault();
+
+            let ui ={};
+
+            let name = document.querySelector("#name").value;
+
+            let email = document.querySelector("#email").value;
+
+            let password = document.querySelector("#password").value;
+
+            let mobile = document.querySelector("#mobile").value;
+
+            if(name==""||email==""||password==""||mobile==""){
+                alert("Please input all Information")
+            }else{
+                ui={
+                    name:name,
+                    email:email,password:password,
+                    mobile:mobile
+                }
+                // console.log(ui)
+                userInfo.push(ui);
+                localStorage.setItem("userInfo",JSON.stringify(userInfo) );
+                alert("SignUp successful");
+                window.location.href = "./login.html"
+            }
+
+
+    })
+</script>
